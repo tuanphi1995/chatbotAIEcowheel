@@ -13,6 +13,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
 
+port = int(os.environ.get('PORT', 5000))  # Lấy cổng từ biến môi trường PORT hoặc dùng mặc định là 5000
+app.run(host='0.0.0.0', port=port)
+
 # Đặt đường dẫn đến tệp tesseract.exe
 pytesseract.pytesseract.tesseract_cmd = r'F:\Tesseract-OCR\tesseract.exe'
 
