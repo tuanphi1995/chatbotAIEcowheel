@@ -13,9 +13,13 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
 
-port = int(os.environ.get('PORT', 5000))  # Lấy cổng từ biến môi trường PORT hoặc dùng mặc định là 5000
-app.run(host='0.0.0.0', port=port)
+@app.route('/')
+def home():
+    return 'Hello, this is the home page!'
 
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))  # Lấy cổng từ biến môi trường hoặc dùng 5000
+    app.run(host='0.0.0.0', port=port)
 # Đặt đường dẫn đến tệp tesseract.exe
 pytesseract.pytesseract.tesseract_cmd = r'F:\Tesseract-OCR\tesseract.exe'
 
@@ -271,7 +275,5 @@ def ask():
 if __name__ == '__main__':
     app.run(debug=True)
     
-    @app.route('/hello')
-def hello():
-    return "Hello, world!"
+
 
